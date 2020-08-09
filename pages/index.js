@@ -42,9 +42,7 @@ const index = () => {
       >
         <h1 className={styles["message"]}>Light Bulb</h1>
         <p>Talk to the light bulb</p>
-        {!talking && (
-          <button onClick={() => console.log("button pressed")}>Speak</button>
-        )}
+        {!talking && <button onClick={() => console.log(record)}>Speak</button>}
       </div>
     </>
   );
