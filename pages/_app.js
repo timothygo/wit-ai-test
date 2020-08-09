@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <MicProvider>
       <SocketProvider>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </SocketProvider>
     </MicProvider>
   );

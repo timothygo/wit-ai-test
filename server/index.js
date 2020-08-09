@@ -4,6 +4,11 @@ const socket = require("socket.io");
 const session = require("express-session");
 const next = require("next");
 
+const axios = require("axios");
+
+const path = require("path");
+const fs = require("fs");
+
 const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
@@ -30,8 +35,20 @@ nextApp.prepare().then(() => {
   io.use((socket, next) => {
     sessionMiddleware(socket.request, socket.request.res, next);
   });
+
   io.on("connection", (socket) => {
-    console.log("socket connected");
+    socket.on("query", async (data) => {
+      const res = await axios({
+        method: "POST",
+        url: "https://api.wit.ai/speech",
+        data: Buffer.from(data.replace("data:audio/wav;base64,", ""), "base64"),
+        headers: {
+          Authorization: `Bearer ${process.env.WIT_ACCESS}`,
+          "Content-Type": "audio/wav",
+        },
+      });
+      socket.emit("query", res.data);
+    });
   });
 
   server.listen(process.env.PORT || 3000, () => console.log("Server started!"));

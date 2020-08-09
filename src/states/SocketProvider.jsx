@@ -1,10 +1,17 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import io from "socket.io-client";
 
 const context = createContext(null);
 
 const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
+
   useEffect(() => {
     setSocket((soc) => {
       if (soc) return soc;
@@ -14,6 +21,7 @@ const SocketProvider = ({ children }) => {
       if (socket) socket.disconnect();
     };
   }, [socket]);
+
   return <context.Provider value={{ socket }}>{children}</context.Provider>;
 };
 

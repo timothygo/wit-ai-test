@@ -1,0 +1,18 @@
+.lights {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 500ms;
+
+  & > * {
+    font-size: 5rem;
+  }
+
+  &--on {
+    background-color: #ffd500;
+  }
+}
