@@ -41,7 +41,7 @@ const index = () => {
         })}
       >
         <h1 className={styles["message"]}>Light Bulb</h1>
-        <p>talk to the light bulb</p>
+        <p>Talk to the light bulb</p>
         {!talking && <button onClick={record}>Speak</button>}
       </div>
     </>
