@@ -1,0 +1,25 @@
+$breakpoints: (
+  "tablet-p": (
+    min-width: 640px,
+  ),
+  "tablet-l": (
+    min-width: 1024px,
+  ),
+  "desktop": (
+    min-width: 1200px,
+  ),
+);
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    @if str-index($string: $breakpoint, $substring: "-p") {
+      @media screen and #{map-get($breakpoints, $breakpoint)} and (orientation: portrait) {
+        @content;
+      }
+    } @else {
+      @media screen and #{map-get($breakpoints, $breakpoint)} and (orientation: landscape) {
+        @content;
+      }
+    }
+  }
+}
