@@ -13,6 +13,7 @@
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "getusermedia": "^2.0.1",
     "hark": "^1.2.3",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
